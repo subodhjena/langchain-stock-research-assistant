@@ -14,4 +14,4 @@ Langchain stock market research assistant
    run(symbol)
    ```
 
-3. It should be noted that initial laod will take some time and consecuteive load should be much faster
+3. It should be noted that initial load will take some time and consecuteive load should be much faster
