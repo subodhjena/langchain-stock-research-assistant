@@ -12,6 +12,7 @@ from langchain.text_splitter import CharacterTextSplitter
 from langchain.utilities import GoogleSearchAPIWrapper
 from langchain.vectorstores import Chroma
 
+from utils.utilities import file_exists
 from web_driver import get_all_links, process_urls_async
 
 load_dotenv()
@@ -68,7 +69,7 @@ def crawl(urls: list[str]):
     Output: documents (list[Document ])
     """
 
-    loader = SeleniumURLLoader(urls=urls, browser="firefox",)
+    loader = SeleniumURLLoader(urls=urls, browser="chrome",)
     documents = loader.load()
 
     return documents
@@ -122,8 +123,11 @@ def run(symbol: str):
     Input: stock_symbol (str)
     """
 
-    # Load the language model
-    llm = OpenAI(temperature=0.9)
+    data_path = f".data/{symbol}/data.txt"
+
+    data_exist = file_exists(data_path)
+    if not data_exist:
+        load_data(symbol)
 
     # Load the documents
     loader = TextLoader(f".data/{symbol}/data.txt", encoding='utf-8')
@@ -145,6 +149,7 @@ def run(symbol: str):
     retriver = docsearch.as_retriever(
         search_type="similarity", search_kwargs={"k": 2})
 
+    llm = OpenAI(temperature=0.9)
     chat_history = []
     qa = ConversationalRetrievalChain.from_llm(
         llm=llm, retriever=retriver, chain_type="stuff")
@@ -156,5 +161,5 @@ def run(symbol: str):
         st.write(result['answer'])
 
 
-symbol = "TCS"
+symbol = "DMART"
 run(symbol)
