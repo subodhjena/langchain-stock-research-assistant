@@ -29,3 +29,9 @@ Langchain stock market research assistant
    ```
 
 5. It should be noted that initial load will take some time and consecuteive load should be much faster
+
+## TODO
+
+1. Source data cleanup
+2. Create REST Api
+3. Index data for faster retrieval
