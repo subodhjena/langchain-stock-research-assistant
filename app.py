@@ -8,9 +8,8 @@ from langchain.chains import ConversationalRetrievalChain
 from langchain.document_loaders import SeleniumURLLoader, TextLoader
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.llms import OpenAI
-from langchain.memory import ConversationBufferMemory
 from langchain.text_splitter import CharacterTextSplitter
-from langchain.utilities import GoogleSearchAPIWrapper, WikipediaAPIWrapper
+from langchain.utilities import GoogleSearchAPIWrapper
 from langchain.vectorstores import Chroma
 
 from web_driver import get_all_links, process_urls_async
