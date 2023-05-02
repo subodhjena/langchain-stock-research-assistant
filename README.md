@@ -2,7 +2,7 @@
 
 Langchain stock market research assistant
 
-![Screenshot](./docs/assets/images/screenshot.png "Screenshot")
+<img src="./docs/assets/images/screenshot.png"  width="400" height="250" />
 
 ## How to run
 
