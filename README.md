@@ -18,7 +18,6 @@ Langchain stock market research assistant
    ```python
    # note: the assistant currently only support indian indices
    symbol = 'SYMBOL'
-   run(symbol)
    ```
 
 4. Run the following command to start the app
