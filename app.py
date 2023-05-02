@@ -1,6 +1,6 @@
 import streamlit as st
 
-from assistant import run
+from core.assistant import run
 
 symbol = "ADANIGREEN"
 st.title("Stock market research assistant")
