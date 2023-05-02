@@ -1,6 +1,9 @@
 import streamlit as st
+from dotenv import load_dotenv
 
 from core.assistant import run
+
+load_dotenv()
 
 symbol = "DMART"
 st.title("Stock market research assistant")
