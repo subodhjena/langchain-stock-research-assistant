@@ -2,7 +2,7 @@ import streamlit as st
 
 from core.assistant import run
 
-symbol = "TATAPOWER"
+symbol = "DMART"
 st.title("Stock market research assistant")
 st_text_input = st.text_input("Ask anything")
 
