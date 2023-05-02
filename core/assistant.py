@@ -7,6 +7,7 @@ from langchain.text_splitter import CharacterTextSplitter
 from langchain.vectorstores import Chroma
 
 from core.stock import load_data
+from helpers.utilities import file_exists
 
 load_dotenv()
 
@@ -39,7 +40,11 @@ def run(symbol: str, prompt: str = ""):
 
     Input: stock_symbol (str)
     """
-    db = get_db(symbol, False)
+
+    data_path = f".data/{symbol}/data.txt"
+    data_exists = not file_exists(data_path)
+
+    db = get_db(symbol, data_exists)
     retriver = db.as_retriever(
         search_type="similarity", search_kwargs={"k": 2})
 
@@ -50,4 +55,3 @@ def run(symbol: str, prompt: str = ""):
 
     result = qa({'question': prompt, 'chat_history': chat_history})
     return result
-
