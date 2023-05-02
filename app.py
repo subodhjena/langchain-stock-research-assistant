@@ -34,7 +34,7 @@ def get_db(symbol: str, refresh: bool = False):
     return db
 
 
-def run(symbol: str):
+def run(symbol: str, prompt: str = ""):
     """
     Run the app
 
@@ -49,12 +49,14 @@ def run(symbol: str):
     qa = ConversationalRetrievalChain.from_llm(
         llm=llm, retriever=retriver, chain_type="stuff")
 
-    st.title("Stock market research assistant")
-    prompt = st.text_input("Ask anything")
-    if prompt:
-        result = qa({'question': prompt, 'chat_history': chat_history})
-        st.write(result['answer'])
+    result = qa({'question': prompt, 'chat_history': chat_history})
+    return result
 
 
 symbol = "ADANIGREEN"
-run(symbol)
+st.title("Stock market research assistant")
+st_text_input = st.text_input("Ask anything")
+
+if st_text_input:
+    result = run(symbol, st_text_input)
+    st.write(result['answer'])
