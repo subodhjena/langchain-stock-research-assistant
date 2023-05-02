@@ -2,6 +2,8 @@
 
 Langchain stock market research assistant
 
+![Screenshot](./docs/assets/images/screenshot.png "Screenshot")
+
 ## How to run
 
 1. Make a copy of .env.example file as .env and popualte the environment variables
